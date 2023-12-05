@@ -4,9 +4,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
@@ -81,8 +79,9 @@ public class PokeApiController {
             // Extracting the list of Pokemon names
             JSONArray originalPokemonList = (JSONArray) originalBody.get("results");
             ArrayList<Map<String, String>> pokemonNames = new ArrayList<>();
-            Map<String, String> dict = new HashMap<>();
+            // Map<String, String> dict = new HashMap<>();
             for (Object pokemonObj : originalPokemonList) {
+                Map<String, String> dict = new HashMap<>();
                 JSONObject pokemon = (JSONObject) pokemonObj;
                 String pokemonName = (String) pokemon.get("name");
                 String pokemonUrl = (String) pokemon.get("url");
