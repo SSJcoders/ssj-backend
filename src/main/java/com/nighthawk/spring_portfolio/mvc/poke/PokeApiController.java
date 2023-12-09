@@ -42,7 +42,7 @@ public class PokeApiController {
          try {  //APIs can fail (ie Internet or Service down)
              
             HttpRequest request = HttpRequest.newBuilder()
-            .uri(URI.create("https://pokeapi.co/api/v2/pokemon?limit=151"))
+            .uri(URI.create("https://pokeapi.co/api/v2/pokemon?limit=5000"))
             .method("GET", HttpRequest.BodyPublishers.noBody())
             .build();
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
@@ -67,12 +67,12 @@ public class PokeApiController {
 
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://pokeapi.co/api/v2/pokemon?limit=151"))
+                .uri(URI.create("https://pokeapi.co/api/v2/pokemon?limit=5000"))
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
 
             HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
+            
             // JSONParser extracts text body and parses to JSONObject
             JSONObject originalBody = (JSONObject) new JSONParser().parse(response.body());
 
@@ -92,7 +92,7 @@ public class PokeApiController {
 
             // Sorting Pokemon names alphabetically
             alphabeticallySort(pokemonNames);
-
+//
             // Creating a new JSON object with sorted Pokemon names
             JSONObject sortedBody = new JSONObject();
             sortedBody.put("pokemon", pokemonNames);
