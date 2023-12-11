@@ -67,7 +67,7 @@ public class PokeApiController {
 
         try {
             HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://pokeapi.co/api/v2/pokemon?limit=151"))
+                .uri(URI.create("https://pokeapi.co/api/v2/pokemon?limit=5000"))
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
 
